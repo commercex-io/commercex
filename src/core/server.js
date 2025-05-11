@@ -13,6 +13,18 @@ function createServer(options = {}) {
     return { status: 'ok' };
   });
 
+  // Allow dynamic plugin registration
+  server.registerPlugin = (plugin, opts = {}) => server.register(plugin, opts);
+
+  // Allow dynamic route registration
+  server.registerRoute = (routeOptions) => server.route(routeOptions);
+
+  // Allow middleware registration (onRequest, preHandler, etc.)
+  server.registerMiddleware = (hook, fn) => server.addHook(hook, fn);
+
+  // Allow error handler registration
+  server.registerErrorHandler = (fn) => server.setErrorHandler(fn);
+
   return server;
 }
 
