@@ -1,0 +1,21 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions & Discussions
+    url: https://github.com/commercex/discussions
+    about: Please ask questions in our GitHub Discussions
+
+  - name: Documentation
+    url: https://github.com/commercex/docs
+    about: Check our documentation for common issues and solutions
+
+  - name: Security Vulnerability
+    url: https://github.com/commercex/security/policy
+    about: Please report security vulnerabilities according to our security policy
+
+  - name: Feature Requests
+    url: https://github.com/commercex/issues/new?template=FEATURE_REQUEST.md
+    about: Suggest an idea or enhancement for this project
+
+  - name: Bug Reports
+    url: https://github.com/commercex/issues/new?template=BUG_REPORT.md
+    about: Report a bug or issue you've encountered

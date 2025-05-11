@@ -9,7 +9,7 @@ importers:
   .:
     dependencies:
       ajv:
-        specifier: ^8.13.0
+        specifier: ^8.17.1
         version: 8.17.1
       axios:
         specifier: ^1.9.0
@@ -27,13 +27,13 @@ importers:
         specifier: ^3.3.2
         version: 3.3.2
       pino:
-        specifier: ^8.19.0
+        specifier: ^8.21.0
         version: 8.21.0
       pino-pretty:
-        specifier: ^11.0.0
+        specifier: ^11.3.0
         version: 11.3.0
       undici:
-        specifier: ^6.10.1
+        specifier: ^6.21.2
         version: 6.21.2
     devDependencies:
       '@types/node':
@@ -43,7 +43,7 @@ importers:
         specifier: ^9.26.0
         version: 9.26.0
       nodemon:
-        specifier: ^3.1.0
+        specifier: ^3.1.10
         version: 3.1.10
       typescript:
         specifier: ^5.8.3

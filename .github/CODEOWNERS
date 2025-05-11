@@ -1,0 +1,38 @@
+# This file defines the code owners for different parts of the repository
+# More info: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owners for everything in the repo (unless a later match takes precedence)
+*       @commercex/maintainers
+
+# Core functionality
+/src/core/           @commercex/core-team
+/src/utils/          @commercex/core-team
+
+# API routes
+/src/routes/         @commercex/api-team
+
+# Plugins
+/src/plugins/        @commercex/plugins-team
+
+# Middleware
+/src/middleware/     @commercex/api-team
+
+# Tests
+/tests/              @commercex/qa-team
+
+# Documentation
+/docs/               @commercex/docs-team
+
+# GitHub workflows
+/.github/            @commercex/devops-team
+
+# Configuration
+/config/             @commercex/devops-team
+
+# Build files
+/build/              @commercex/devops-team
+
+# Package files
+package.json         @commercex/leads
+pnpm-lock.yaml       @commercex/leads
+pnpm-workspace.yaml  @commercex/leads
