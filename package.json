@@ -1,0 +1,33 @@
+{
+  "name": "commercex",
+  "version": "0.1.0",
+  "description": "A high-performance, stateless, declarative API Gateway for eCommerce, built on Fastify.",
+  "main": "commercex.js",
+  "types": "commercex.d.ts",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix",
+    "test": "vitest"
+  },
+  "repository": "github:commercex-io/commercex",
+  "homepage": "https://commercex.io",
+  "author": "daddia <hello@commercex.io>",
+  "license": "MIT",
+  "keywords": [
+    "api-gateway",
+    "ecommerce",
+    "fastify",
+    "plugin",
+    "aggregator",
+    "stateless"
+  ],
+  "dependencies": {
+    "fastify": "^5.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.17",
+    "eslint": "^9.26.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.3"
+  }
+}

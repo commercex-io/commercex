@@ -1,0 +1,117 @@
+{
+  "$schema": "https://commercex.io/schema/v1/commercex.json",
+  "version": "1.0",
+  "name": "CommerceX API Gateway",
+  "port": 8080,
+  "timeout": "5s",
+  "cache_ttl": "300s",
+  "extra_config": {
+    "logging": {
+      "level": "info",
+      "format": "json",
+      "output": "stdout"
+    },
+    "metrics": {
+      "enabled": true,
+      "interval": "60s",
+      "endpoint": "/metrics"
+    },
+    "cors": {
+      "allow_origins": ["https://storefront.example.com", "https://admin.example.com"],
+      "allow_methods": ["GET", "POST", "PUT", "DELETE"],
+      "allow_headers": ["Authorization", "Content-Type"],
+      "expose_headers": ["X-Request-ID"],
+      "max_age": "12h"
+    },
+    "auth": {
+      "jwt": {
+        "alg": "HS256",
+        "secret": "your-secret-key",
+        "audience": ["https://api.example.com"],
+        "roles_key": "roles",
+        "roles": ["admin", "user"]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "endpoint": "/products",
+      "method": "GET",
+      "cache_ttl": "300s",
+      "backend": [
+        {
+          "host": ["https://shopify-api.example.com"],
+          "url_pattern": "/products",
+          "extra_config": {
+            "qos/ratelimit": {
+              "max_rate": 10,
+              "capacity": 5
+            },
+            "circuit_breaker": {
+              "interval": 60,
+              "timeout": 10,
+              "max_errors": 2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/categories",
+      "method": "GET",
+      "backend": [
+        {
+          "host": ["https://commercetools-api.example.com"],
+          "url_pattern": "/categories",
+          "extra_config": {
+            "transform": {
+              "headers": {
+                "X-Custom-Header": "ecommerce-platform"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/search",
+      "method": "POST",
+      "backend": [
+        {
+          "host": ["https://algolia-api.example.com"],
+          "url_pattern": "/search",
+          "extra_config": {
+            "qos/ratelimit": {
+              "max_rate": 20,
+              "capacity": 10
+            },
+            "transform": {
+              "body": {
+                "source": "request",
+                "path": "$.query"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/orders/{id}",
+      "method": "GET",
+      "backend": [
+        {
+          "host": ["https://fluentcommerce-api.example.com"],
+          "url_pattern": "/orders/{id}",
+          "extra_config": {
+            "auth": {
+              "jwt": {
+                "required": true,
+                "roles": ["admin", "user"]
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
